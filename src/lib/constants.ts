@@ -63,6 +63,21 @@ export const CALCULATORS = [
       "how many sprinkler heads do I need",
     ],
   },
+  {
+    slug: "striping",
+    title: "Parking Lot Line Striping Calculator",
+    shortTitle: "Striping",
+    description:
+      "Estimate pavement marking linear feet, traffic paint gallons, and striping cost. Includes stalls, ADA symbols, fire lanes, arrows, and mobilization.",
+    href: "/calculators/striping",
+    icon: "striping" as const,
+    keywords: [
+      "line striping calculator",
+      "parking lot striping cost",
+      "pavement marking calculator",
+      "striping paint calculator",
+    ],
+  },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];

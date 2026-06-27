@@ -77,6 +77,20 @@ export function IconIrrigation(props: IconProps) {
   );
 }
 
+export function IconStriping(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <rect x="2" y="4" width="20" height="16" rx="1.5" />
+      <path d="M6 10h12" />
+      <path d="M6 14h8" />
+      <path d="M8 8v8" />
+      <path d="M12 8v8" />
+      <path d="M16 8v8" />
+      <path d="M4 18h16" strokeWidth={2.5} />
+    </IconBase>
+  );
+}
+
 export function IconCalculator(props: IconProps) {
   return (
     <IconBase {...props}>
@@ -222,6 +236,7 @@ const ICON_MAP: Record<IconName, React.ComponentType<IconProps>> = {
   fence: IconFence,
   deck: IconDeck,
   irrigation: IconIrrigation,
+  striping: IconStriping,
 };
 
 export function CalculatorIcon({

@@ -10,7 +10,7 @@ import { CALCULATORS } from "@/lib/constants";
 import { faqJsonLd } from "@/lib/seo";
 
 const STATS = [
-  { value: "4", label: "Free calculators" },
+  { value: "5", label: "Free calculators" },
   { value: "0$", label: "Always free" },
   { value: "100", label: "CWV score target" },
 ];
