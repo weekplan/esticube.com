@@ -10,6 +10,7 @@ import {
   buildMetadata,
   faqJsonLd,
   howToJsonLd,
+  imageObjectJsonLd,
   webAppJsonLd,
 } from "@/lib/seo";
 
@@ -33,6 +34,7 @@ export const metadata: Metadata = buildMetadata({
   description: content.meta.description,
   path: "/calculators/striping",
   keywords: content.meta.keywords,
+  ogImage: "/illustrations/striping-illustration.webp",
 });
 
 export default function StripingCalculatorPage() {
@@ -55,6 +57,12 @@ export default function StripingCalculatorPage() {
             content.intro[0] ?? "",
             content.howTo.steps,
             url,
+          ),
+          imageObjectJsonLd(
+            "Line striping calculator illustration",
+            "Parking lot pavement marking with striping machine and ADA symbols",
+            url,
+            "/illustrations/striping-illustration.webp",
           ),
         ]}
       />

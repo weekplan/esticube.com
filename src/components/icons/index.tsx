@@ -80,13 +80,11 @@ export function IconIrrigation(props: IconProps) {
 export function IconStriping(props: IconProps) {
   return (
     <IconBase {...props}>
-      <rect x="2" y="4" width="20" height="16" rx="1.5" />
-      <path d="M6 10h12" />
-      <path d="M6 14h8" />
-      <path d="M8 8v8" />
-      <path d="M12 8v8" />
-      <path d="M16 8v8" />
+      <rect x="2" y="5" width="20" height="14" rx="1.5" />
       <path d="M4 18h16" strokeWidth={2.5} />
+      <path d="M7 9v6M11 9v6M15 9v6" />
+      <path d="M6 12h12" strokeDasharray="2 2" />
+      <rect x="16" y="7" width="4" height="4" rx="0.5" fill="currentColor" stroke="none" opacity="0.35" />
     </IconBase>
   );
 }

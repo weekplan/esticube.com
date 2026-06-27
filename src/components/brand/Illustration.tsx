@@ -32,6 +32,12 @@ export const ILLUSTRATIONS = {
     width: 800,
     height: 800,
   },
+  striping: {
+    src: "/illustrations/striping-illustration.webp",
+    alt: "Parking lot line striping illustration with striping machine and fresh pavement markings",
+    width: 800,
+    height: 800,
+  },
 } as const;
 
 type IllustrationKey = keyof typeof ILLUSTRATIONS;
