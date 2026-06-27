@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Uruchamia się przy push do brancha main
+  push:
+    branches: ["main"]
+  
+  # Pozwala na ręczne uruchomienie z zakładki Actions
+  workflow_dispatch:
+
+# Ustawia permissions dla GITHUB_TOKEN żeby umożliwić deployment do GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pozwala tylko jeden deployment na raz, kolejne będą czekać w kolejce
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        # NOTE: No static_site_generator for custom domain deployment
+          
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          # Generuj nowy cache key gdy zmienią się dependencies lub build files
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build with Next.js
+        run: npm run build
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
