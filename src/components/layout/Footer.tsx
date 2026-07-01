@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { CookieSettingsLink } from "@/components/consent/CookieSettingsLink";
 import { CALCULATORS, SITE_TAGLINE } from "@/lib/constants";
 
 export function Footer() {
@@ -44,6 +45,31 @@ export function Footer() {
               <li>US measurements &amp; cost data</li>
               <li>Mobile-first, instant results</li>
               <li>Built for 100/100 Core Web Vitals</li>
+            </ul>
+
+            <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-white/45">
+              Legal
+            </p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <Link
+                  href="/privacy"
+                  className="text-sm text-white/75 transition-colors hover:text-brand-light"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cookies"
+                  className="text-sm text-white/75 transition-colors hover:text-brand-light"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+              <li>
+                <CookieSettingsLink />
+              </li>
             </ul>
           </div>
         </div>

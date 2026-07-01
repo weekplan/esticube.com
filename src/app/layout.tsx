@@ -1,4 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import {
+  ConsentGatedScripts,
+  CookieConsentProvider,
+} from "@/components/consent/CookieConsent";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -41,9 +45,12 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd()} />
       </head>
       <body className="min-h-dvh flex flex-col bg-background text-foreground">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CookieConsentProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ConsentGatedScripts />
+        </CookieConsentProvider>
       </body>
     </html>
   );
